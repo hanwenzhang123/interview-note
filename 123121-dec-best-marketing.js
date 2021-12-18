@@ -64,17 +64,27 @@ any question: samples -> about project, about team, about sprint.
 Q: comparing two objects to determine if the first one contains the same properties as the second one 
   => matchObject(obj1, obj2) //return Boolean
 
+//1
 function isEqual(object1, object2) {
   return object1.key === object2.key;
 }
 
+//2
+const haveSameData = function (obj1, obj2) {
+    const obj1Length = Object.keys(obj1).length;
+    const obj2Length = Object.keys(obj2).length;
+
+    if (obj1Length === obj2Length) {
+        return Object.keys(obj1).every(
+	    key => obj2.hasOwnProperty(key) && obj2[key] === obj1[key]);
+    }
+}
+
+//3
 function isEquivalent(a, b) {
-    // Create arrays of property names
     var aProps = Object.getOwnPropertyNames(a);
     var bProps = Object.getOwnPropertyNames(b);
 
-    // If number of properties is different,
-    // objects are not equivalent
     if (aProps.length != bProps.length) {
         return false;
     }
@@ -82,15 +92,11 @@ function isEquivalent(a, b) {
     for (var i = 0; i < aProps.length; i++) {
         var propName = aProps[i];
 
-        // If values of same property are not equal,
-        // objects are not equivalent
         if (a[propName] !== b[propName]) {
             return false;
         }
     }
 
-    // If we made it this far, objects
-    // are considered equivalent
     return true;
 }
 
