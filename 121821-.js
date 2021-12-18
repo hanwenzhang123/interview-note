@@ -1,3 +1,5 @@
+//mthree coding challenges
+
 1.
 ```
 https://www.codingame.com/training/expert/the-lucky-number
