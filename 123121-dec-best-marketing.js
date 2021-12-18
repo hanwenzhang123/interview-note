@@ -62,7 +62,47 @@ arr of component: missing a key
 any question: samples -> about project, about team, about sprint.
 
 Q: comparing two objects to determine if the first one contains the same properties as the second one 
-  matchObject(obj1, obj2) //return Boolean
+  => matchObject(obj1, obj2) //return Boolean
+
+function isEqual(object1, object2) {
+  return object1.key === object2.key;
+}
+
+function isEquivalent(a, b) {
+    // Create arrays of property names
+    var aProps = Object.getOwnPropertyNames(a);
+    var bProps = Object.getOwnPropertyNames(b);
+
+    // If number of properties is different,
+    // objects are not equivalent
+    if (aProps.length != bProps.length) {
+        return false;
+    }
+
+    for (var i = 0; i < aProps.length; i++) {
+        var propName = aProps[i];
+
+        // If values of same property are not equal,
+        // objects are not equivalent
+        if (a[propName] !== b[propName]) {
+            return false;
+        }
+    }
+
+    // If we made it this far, objects
+    // are considered equivalent
+    return true;
+}
+
+//Lodash
+_.isEqual(obj1, obj2)	//deep shallow
+
+//JSON
+JSON.stringify(obj1) === JSON.stringify(obj2);
+
+//JSON.stringify = The result will be a string following the JSON notation.
+const arr = ["John", "Peter", "Sally", "Jane"];
+const myJSON = JSON.stringify(arr);	//'["John","Peter","Sally","Jane"]'
 
 
 12/03 Kevin - wells fargo
