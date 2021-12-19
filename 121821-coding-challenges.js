@@ -1,6 +1,6 @@
 //mthree coding challenges
 
-1.
+//1.
 ```
 https://www.codingame.com/training/expert/the-lucky-number
 A lucky number is a 10-based number, which has at least a "6" or an "8" in its digits. 
@@ -9,7 +9,7 @@ For example, "16", "38", "666" are lucky numbers, while "234" , "687" are not.
 Now we want to know how many lucky numbers (without leading zeroes) are there between L and R, inclusive?
 ```
 
-2.
+//2.
 ```
 https://www.codingame.com/ide/puzzle/the-fastest (50 pts)
 The program:
@@ -28,7 +28,7 @@ CONSTRAINTS:
 0 ≤ seconds < 60
 ```
 
-3.
+//3.
 ```
 Write a class limitedqueue which will implement a limited queue of objects. 
 The queue is just a normal queue that can accept up to N elements only. 
@@ -47,7 +47,7 @@ This must be done in Java if possible.
 - What is a RESTful API and what are its advantages?
   RESTful API provides a set of tools that allows us to build apps via HTTP requests through the CRUD operations.
 
-1.
+//1.
 ```
 String Challenge
 Have the function StringChallenge(str) take the str parameter being passed which will be an average rating between 0.00 and 5.00, 
@@ -135,8 +135,8 @@ console.log(StringChallenge(readline()));
 
 
 //zippity coding challenges
-
-
+//1. Class-based Component - Color Picker
+//2. Functional-based Component - Customer List
 //3. Powers of 2
 function isPower(arr) {
     // Write your code here
