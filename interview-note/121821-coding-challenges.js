@@ -1,5 +1,4 @@
-//mthree coding challenges
-
+//12/18/2021 - mthree coding challenges
 //1.
 ```
 https://www.codingame.com/training/expert/the-lucky-number
@@ -43,7 +42,7 @@ This must be done in Java if possible.
 ```
 
 
-//loom coding challenges
+//12/18/2021 - Loom coding challenges
 - What is a RESTful API and what are its advantages?
   RESTful API provides a set of tools that allows us to build apps via HTTP requests through the CRUD operations.
 
@@ -134,7 +133,7 @@ function StringChallenge(str) {
 console.log(StringChallenge(readline()));
 
 
-//zippity coding challenges
+//12/18/2021 - zippity coding challenges
 //1. Class-based Component - Color Picker
 //2. Functional-based Component - Customer List
 //3. Powers of 2
