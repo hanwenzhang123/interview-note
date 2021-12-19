@@ -222,14 +222,16 @@ arrow function does not have its own this to be referred to the current object
 JavaScript is a single threaded language so we can use await/promise to do asynchronous tasks.
 
 18. Please use a most simple JS code to define 4x5 String arrays
+
 const example = [
-    [‘a’, ‘b’, ‘c’, ‘d’],
-    [‘e’, ‘f’, ‘g’, ‘h’],
-    ['i’, ‘j’, ‘k’, ‘l’],
-    [‘m’, ‘n’, ‘o’, ‘p’],
-    [‘q’, ‘r’, ‘s’, ‘t’]
+    ['a', 'b', 'c', 'd'],
+    ['e', 'f', 'g', 'h'],
+    ['i', 'j', 'k', 'l'],
+    ['m', 'n', 'o', 'p'],
+    ['q', 'r', 's', 't']
 ];
 example[4][3]	//t
+
 19.Please use the simplest way to convert the characters below and remove the repeat characters.  “Hello world”
 "Hello World".split('').filter((word, index, string) => string.indexOf(word) === index).join("")
 
