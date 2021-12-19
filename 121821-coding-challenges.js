@@ -135,3 +135,20 @@ console.log(StringChallenge(readline()));
 
 
 //zippity coding challenges
+
+
+//3. Powers of 2
+function isPower(arr) {
+    // Write your code here
+    let tempArr = [];
+    
+    for (let i = 0; i < arr.length; i++){
+        if(arr[i] % 2 !== 0){   //arr[i] && (arr[i] & (arr[i] - 1)) === 0
+            tempArr.push(0)
+        } else {
+            tempArr.push(1)
+        }
+    }
+    
+    return tempArr;
+}
