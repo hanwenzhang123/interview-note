@@ -1,0 +1,46 @@
+Data Structures + Algorithms = Programs
+
+Data Structures - A collection of values
+Algorithms - Steps and processes we put in place to manipulate this collection of values that allows us to write programs
+
+What is a Data Structure?
+Data structure allows us to organize the data, so we can go back to that data and retrieve the data
+https://en.wikipedia.org/wiki/List_of_data_structures
+
+Which code is better?
+Readable
+Memory - Space Complexity
+Speed - Time Complexity
+
+How Computers Store Data?
+CPU - Computer runs by CPU, CPU Cache (tiny) stores memory that is very recent
+RAM (adderss, bit, byte) - Fast to access to memory through memory controler, but you lose the memory when computer shut off 
+Storage (Video, Photo, Music, Documents) - information is always there
+
+Computer Memory
+http://statmath.wu.ac.at/courses/data-analysis/itdtHTML/node55.html
+
+Data Structures
+- Arrays
+- Stacks
+- Queues
+- LinkedLists
+- Trees
+- Tries
+- Graphs
+- Hash Tables
+
+Algorithms
+- Sorting
+- Dynamic Programming
+- BFS + DFS (Searching)
+- Recursion
+ 
+Operations on Data Structures
+- insertion
+- deletion
+- traversal
+- searching
+- sorting
+- access
+ 
