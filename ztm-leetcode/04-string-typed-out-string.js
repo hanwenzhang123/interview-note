@@ -85,7 +85,7 @@ var backspaceCompare = function(S, T) {
                 
                 while(backCount > 0) {  //while back count is bigger than 0
                     p1--;       //the pointer shifts over by one
-                    backCount--;    //back count minus one
+                    backCount--;    //we have consume one backcount, so backcount minus one
                     
                     if(S[p1] === "#") { //if we see another #
                         backCount += 2; //we add the back count 
