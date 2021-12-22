@@ -65,20 +65,30 @@ step 8: can we optimize our solution?
 const string1 = "ab#z"
 const string2 = "az#z"
 
+"abc#d" => "abd"
+['a', 'b', 'd']
+T/F
+"abzz##d" => "abd"
+['a', 'b', 'd']
+
+//we need to create the data structure in order to compare
+//we can move the pointers from the end to front
+//we also compare each element value from the end 
+
 var backspaceCompare = function(S, T) {
-    let p1 = S.length - 1, p2 = T.length - 1;
+    let p1 = S.length - 1, p2 = T.length - 1;       //pointer starts from the end of the string
     
     while(p1 >= 0 || p2 >= 0) {
         if(S[p1] === "#" || T[p2] === "#") {
-            if(S[p1] === "#") {
-                let backCount = 2;
+            if(S[p1] === "#") {     //when we see a #
+                let backCount = 2;      //initialize a variable backCount with value 2 since we need to back count by 2
                 
-                while(backCount > 0) {
-                    p1--;
-                    backCount--;
+                while(backCount > 0) {  //while back count is bigger than 0
+                    p1--;       //the pointer shifts over by one
+                    backCount--;    //back count minus one
                     
-                    if(S[p1] === "#") {
-                        backCount += 2;
+                    if(S[p1] === "#") { //if we see another #
+                        backCount += 2; //we add the back count 
                     }
                 }
             }
@@ -95,10 +105,10 @@ var backspaceCompare = function(S, T) {
                     }
                 }
             }
-        } else {
-            if(S[p1] !== T[p2]) {
+        } else {    //check the value if are the same
+            if(S[p1] !== T[p2]) {  //if not the same, then return false
                 return false;
-            } else {
+            } else {    //else, we shift both pointers until the beginning
                 p1--;
                 p2--;
             }
