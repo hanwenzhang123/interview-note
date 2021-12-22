@@ -21,37 +21,91 @@ step 4: write out our solution in code
 const string1 = "ab#z"
 const string2 = "az#z"
 
-const buildString = function(string) {
-    const builtString = [];
-    for(let p = 0; p < string.length; p++) {
+const buildString = function(string) {      //O(n)
+    const builtArray = [];
+    for(let p = 0; p < string.length; p++) {   //iterate each letter of the string
         if(string[p] !== '#') {
-            builtString.push(string[p]);    //push to the array when it is not #
+            builtArray.push(string[p]);    //push the letter to the array when it is not #
         } else {
-            builtString.pop();    //pop out the last element in the array
+            builtArray.pop();    //pop out the last element in the array when we see #
         }
     }
-    return builtString;     //return the value of what we get for the string
+    return builtArray;     //return the value of what we get for the string
 }
 
 var backspaceCompare = function(S, T) {
-    const finalS = buildString(S);
-    const finalT = buildString(T);
+    const finalS = buildString(S);      //O(a): a - the size of s
+    const finalT = buildString(T);      //O(b): b - the size of t
     
-    if(finalS.length !== finalT.length) {
-        return false        //check if the case fails
-    } else {
-        for(let p = 0; p < finalS.length; p++) {
-            if(finalS[p] !== finalT[p]) {
-                return false        //check if the case fails
+    //O(a) or O(b)
+    if(finalS.length !== finalT.length) {   //if the length of both are different
+        return false     //we know it is not the same, return false
+    } else {        //if two string length are the same
+        for(let p = 0; p < finalS.length; p++) {  //iterate through one to check on another one
+            if(finalS[p] !== finalT[p]) {   //check if equal for both array on each index
+                return false        //return false if the value on the index not equal
             }
         }
     }
+    //no more other logics to cause the validation to fail
     return true;
 };
 
 console.log(backspaceCompare(string1, string2));
 
 step 5: double check for errors
+
 step 6: test our code with our test cases
+
 step 7: space & time complexity
+// time complexity: O(a+b)
+// space complexity: O(a+b)
+
 step 8: can we optimize our solution?
+const string1 = "ab#z"
+const string2 = "az#z"
+
+var backspaceCompare = function(S, T) {
+    let p1 = S.length - 1, p2 = T.length - 1;
+    
+    while(p1 >= 0 || p2 >= 0) {
+        if(S[p1] === "#" || T[p2] === "#") {
+            if(S[p1] === "#") {
+                let backCount = 2;
+                
+                while(backCount > 0) {
+                    p1--;
+                    backCount--;
+                    
+                    if(S[p1] === "#") {
+                        backCount += 2;
+                    }
+                }
+            }
+            
+            if(T[p2] === "#") {
+                let backCount = 2;
+                
+                while(backCount > 0) {
+                    p2--;
+                    backCount--;
+                    
+                    if(T[p2] === "#") {
+                        backCount += 2;
+                    }
+                }
+            }
+        } else {
+            if(S[p1] !== T[p2]) {
+                return false;
+            } else {
+                p1--;
+                p2--;
+            }
+        }
+    }
+    
+    return true;
+};
+
+console.log(backspaceCompare(string1, string2));
