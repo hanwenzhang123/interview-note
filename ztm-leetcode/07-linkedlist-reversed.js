@@ -1,6 +1,6 @@
 //Introducing Linked List
-- singly linked list
-- doubly linked list
+- singly linked list (only able to traverse forwards)
+- doubly linked list (able to traverse back and forth)
 
 //List Node:
 class ListNode {
