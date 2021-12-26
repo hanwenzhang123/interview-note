@@ -13,6 +13,14 @@ step 2: write out some test cases
 "" => 0
 "abcbda" => 4 //cbda
 
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+
+Input: s = "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+
 step 3: figure out a solution without code
 const string = "abccabb"
 
@@ -64,21 +72,49 @@ step 8: can we optimize our solution?
   
 const string = "au"
 
+// Time: O(N)
+// Space: O(N)
+
+const lengthOfLongestSubstring = function(s) {
+    if(s.length <= 1) return s.length;  //just return if the length less than 1
+    
+    const seen = {};    //will be key/value, key is the character, value is the index
+    let left = 0, longest = 0;  //start as 0, and track the longest value seen thus far
+    
+    for(let right = 0; right < s.length; right++) { //iterate right pointer
+        const currentChar = s[right];   //current character points to right ponter
+        const previouslySeenChar = seen[currentChar];   //either undefined or an index number
+        
+        if(previouslySeenChar >= left) {
+          left = previouslySeenChar + 1;  //have the left pointer joins to the right pointer value
+        }
+        
+        seen[currentChar] = right;  //replace the value to the seen[currentChar]
+        
+        longest = Math.max(longest, right - left + 1);  //update longest between longest and the current substring
+    }
+    
+    return longest;
+};
+
+console.log(lengthOfLongestSubstring(string));
+
+//Optimized solution using Map()
 const lengthOfLongestSubstring = function(s) {
     if(s.length <= 1) return s.length;
     
-    const seen = {};
+    const seen = new Map();
     let left = 0, longest = 0;
     
     for(let right = 0; right < s.length; right++) {
         const currentChar = s[right];
-        const previouslySeenChar = seen[currentChar];
+        const previouslySeenChar = seen.get(currentChar);   //passing the key we are looking for
         
         if(previouslySeenChar >= left) {
           left = previouslySeenChar + 1;
         }
         
-        seen[currentChar] = right;
+        seen.set(currentChar, right);  //takes 2 argument, key and value that we want to set
         
         longest = Math.max(longest, right - left + 1);
     }
