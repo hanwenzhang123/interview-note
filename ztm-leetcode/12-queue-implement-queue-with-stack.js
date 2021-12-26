@@ -21,6 +21,7 @@ myQueue.empty(); // return false
 step 1: verify the constraints
 step 2: write out some test cases
 step 3: figure out a solution without code
+
 step 4: write out our solution in code
 class QueueWithStacks {
   constructor() {
@@ -28,32 +29,32 @@ class QueueWithStacks {
     this.out = [];
   }
 
-  enqueue(val) {
-    this.in.push(val);
+  enqueue(val) {  //O(1)
+    this.in.push(val);  //push the value to this.in
   }
 
-  dequeue() {
+  dequeue() {   //O(n)
     if (this.out.length === 0) {
-      while(this.in.length > 0) {
-        this.out.push(this.in.pop());
+      while(this.in.length > 0) { //as long as in is not empty
+        this.out.push(this.in.pop()); //pop this.in then push in this.out
       }
     }
     
-    return this.out.pop();
+    return this.out.pop();    //pop the this.out
   }
 
-  peek() {
+  peek() {   //O(n)
     if (this.out.length === 0) {
-        while(this.in.length > 0) {
-            this.out.push(this.in.pop());
+        while(this.in.length > 0) { //as long as in is not empty
+            this.out.push(this.in.pop()); //pop this.in then push in this.out
         }
     }
     
-    return this.out[this.out.length - 1];
+    return this.out[this.out.length - 1];   //return the last value from this.out
   }
 
-  empty() {
-    return this.in.length === 0 && this.out.length === 0;
+  empty() {   //O(n)
+    return this.in.length === 0 && this.out.length === 0;   //return true or false based on whether any value in queue
   }
 };
 
@@ -61,3 +62,4 @@ step 5: double check for errors
 step 6: test our code with our test cases
 step 7: space & time complexity
 step 8: can we optimize our solution?
+  
