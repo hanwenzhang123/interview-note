@@ -32,30 +32,34 @@ step 4: write out our solution in code
 const string1 = "(ab(cd)"
 
 const minRemoveToMakeValid = function(str) {
-    const res = str.split('');
-    const stack = [];
+    const res = str.split('');  //O(n), return array with every single character
+    const stack = [];       //O(n)
     
-    for (let i = 0; i < res.length; i++) {
-        if (res[i] === '(') {
-            stack.push(i);
-        } else if (res[i] === ')' && stack.length) {
-            stack.pop();
-        } else if (res[i] === ')') {
-            res[i] = ''
+    for (let i = 0; i < res.length; i++) {  //O(n)
+        if (res[i] === '(') {   //when we encounter a left facing bracket
+            stack.push(i);  //push the index value to stack
+        } else if (res[i] === ')' && stack.length) {    //right facing while stack we have value in it
+            stack.pop();    //pop up the last value from stack
+        } else if (res[i] === ')') {    //right bracket but stack has no values
+            res[i] = '' //changing the value at res[i] to empty
         }
     }
     
-    while (stack.length) {
-        const curIdx = stack.pop();
-        res[curIdx] = '';
+    while (stack.length) {  //O(n), while we have something in stack
+        const curIdx = stack.pop(); //pop out the value (index number) from stack
+        res[curIdx] = '';   //get rid of the invalid bracket that is not closed properly
     }
     
-    return res.join('');
+    return res.join('');   //O(n), join the array back as string
 };
 
 console.log(minRemoveToMakeValid(string1))
 
 step 5: double check for errors
 step 6: test our code with our test cases
+
 step 7: space & time complexity
+time: O(n)
+space: O(n)
+
 step 8: can we optimize our solution?
