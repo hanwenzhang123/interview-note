@@ -117,25 +117,25 @@ const printList = head => {
 // --------- Our solution -----------
 
 var flatten = function (head) {
-  if (!head) return head;   //when head not exist, just return head
+  if (!head) return head;   //if head is not exist, just return head
 
   let currentNode = head;   //set the current node 
-  while (currentNode !== null) {  //as long as head is not null
-    if (currentNode.child === null) { //when it is no child
+  while (currentNode !== null) {  //as long as head is not null, while loop keeps running
+    if (currentNode.child === null) { //when current node has no child, we just move forwards
       currentNode = currentNode.next; //just advance the current node to next
-    } else {    //when there is a child
-      let tail = currentNode.child;   //let the tail be the pointer
-      while (tail.next !== null) {
+    } else {    //when there is a child, we start merging the child to the list
+      let tail = currentNode.child;   //let the tail be the pointer - currentNode.child
+      while (tail.next !== null) { //while we have a tail.next
         tail = tail.next;   //tail will be the next value to tail
       }
 
       tail.next = currentNode.next;
       if (tail.next !== null) {   //when next value value is null
-        tail.next.prev = tail;
+        tail.next.prev = tail; //tail.next.prev still points to the tail
       }
 
-      currentNode.next = currentNode.child;
-      currentNode.next.prev = currentNode;  //set the current node (next's previous node) as current node
+      currentNode.next = currentNode.child; //the next node point to the child
+      currentNode.next.prev = currentNode;  //set the current node (next's previous node) points back to the current node
       currentNode.child = null;
     }
   }
