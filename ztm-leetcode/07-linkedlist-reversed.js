@@ -132,8 +132,8 @@ const printList = (head) => {
 // --------- Our solution -----------
 
 var reverseBetween = function(head, m, n) {
-  let currentPos = 1, currentNode = head;   //current position and current node
-  let start = head;   //initialize start value from head
+  let currentPos = 1, currentNode = head;   //current position tells us what to do at each iteration
+  let start = head;   //start will be m-1, it represents the last list node before the start of our reverse link list section.
   
   while(currentPos < m) {   //while loop checks and see current position less than m
     start = currentNode;  //start is the current node
