@@ -6,6 +6,20 @@ A message containing letters from A-Z can be encoded into numbers using the foll
 'Z' -> "26"
 To decode an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways). For example, "11106" can be mapped into:
 
+"a" = 1
+"b" = 2
+"c" = 3
+...
+"z" = 26
+"ab" = "12"
+"12" = "l"
+"3" -> "c" num_ways("3") = 1
+"" -> "" num_ways("") = 1
+"12345" -> "a" + decode("2345") or "l" + decode("345")
+"27345" -> "b" + decode("7345")
+num_ways("27345") = num_ways("7345")
+num_ways("011") = 0
+
 "AAJF" with the grouping (1 1 10 6)
 "KJF" with the grouping (11 10 6)
 Note that the grouping (1 11 06) is invalid because "06" cannot be mapped into 'F' since "6" is different from "06".
