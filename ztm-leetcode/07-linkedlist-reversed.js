@@ -106,6 +106,22 @@ step 3: figure out a solution without code
 5. update current node to stored next value at step 2
 6. increment position
 
+m=3, n=5
+m-1, m, n, n+1
+ 2   3  5   6
+
+head  1
+position  3 - 4
+currentNode 3 - 4
+start 2
+tail  3
+
+head  1
+position  5 - 6
+currentNode 5 - 6
+start 2
+tail  3
+
 step 4: write out our solution in code
 //NOTE: The beginning portion builds our test case linked list. Scroll down to the section titled Our Solution for the code solution!
 
@@ -132,27 +148,28 @@ const printList = (head) => {
 // --------- Our solution -----------
 
 var reverseBetween = function(head, m, n) {
-  let currentPos = 1, currentNode = head;   //current position tells us what to do at each iteration
+  let currentPos = 1;   //current position
+  let currentNode = head;   //current position tells us what to do at each iteration
   let start = head;   //start will be m-1, it represents the last list node before the start of our reverse link list section.
   
   while(currentPos < m) {   //while loop checks and see current position less than m
-    start = currentNode;  //start is the current node
-    currentNode = currentNode.next;   //update the current node position to next
+    start = currentNode;  //start is the current node (the one before m)
+    currentNode = currentNode.next;   //advanced current node by one, update the current node position to next
     currentPos++;   //increment the current position count
   }
   
   let newList = null, tail = currentNode;
   
-  while(currentPos >= m && currentPos <= n) {
-    const next = currentNode.next;
-    currentNode.next = newList;
-    newList = currentNode;
-    currentNode = next;
-    currentPos++;
+  while(currentPos >= m && currentPos <= n) { //current position is within the boundry of m and n
+    const next = currentNode.next;    //the next value to currentNode
+    currentNode.next = newList;   //null first
+    newList = currentNode;    //change to currentNode
+    currentNode = next;     //currentNode moves to the next node
+    currentPos++;   //position increment
   }
   
-  start.next = newList;
-  tail.next = currentNode;
+  start.next = newList;   //newList is always the head of the actual full list
+  tail.next = currentNode;  //current node is currently pointing n+1
   
   if(m > 1) {
     return head
