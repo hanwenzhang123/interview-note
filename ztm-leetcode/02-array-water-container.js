@@ -114,3 +114,15 @@ console.log(getMaxWaterContainer(heightsArray));
 
 time: O(n)    //because we at most scan over the entire array looking at each element once
 space: O(1)   //static variable, not grow any larger
+
+//Solution #3
+const getMaxWaterContainer = function(heights) {
+  let max = Math.max(...heights);
+  let indexMax = heights.indexOf(max);
+  let newHeight = heights.splice(indexMax, 1, 0);
+  let max2 =  Math.max(...heights);
+  let indexMax2 = heights.indexOf(max2);
+  let area = Math.abs(max2 * (indexMax2 - indexMax))
+  return area;
+}
+  
