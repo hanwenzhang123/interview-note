@@ -52,12 +52,12 @@ const findCycle = function(head){
       return false
     }
     
-    seenNodes.add(currentNode);
+    seenNodes.add(currentNode); //add the currentNode to seenNodes
     
-    currentNode = currentNode.next;   //set the currentNode that starts the cycle
+    currentNode = currentNode.next; //set the currentNode where the cycle starts
   }
   
-  return currentNode;
+  return currentNode; //return the currentNode where the cycle starts
 }
 
 step 5: double check for errors
