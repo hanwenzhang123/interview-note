@@ -22,22 +22,22 @@ step 3: figure out a solution without code
 step 4: write out our solution in code
 const string = "{()[]}"
 
-const parens = {
+const parens = {   //key as the left bracket, value as the right bracket
     '(': ')',
-    '{' : '}',
+    '{': '}',
     '[': ']'
 }
 
 var isValid = function(s) {
   if(s.length === 0) return true; //empty, just return true
   
-  const stack = [];   //using array to store the stack (push pop)
+  const stack = [];   //using array to store the stack (push/pop and compare with existing parens)
   
   for(let i = 0; i < s.length; i++)  {  //iterate through string
-    if(parens[s[i]]) {    //left bracket
-      stack.push(s[i]);   //push the left bracket
+    if(parens[s[i]]) {    //in the case we have the left bracket
+      stack.push(s[i]);   //push in the value of the left bracket
     } else {    //right bracket
-      const leftBracket = stack.pop();  //pop it
+      const leftBracket = stack.pop();  //pop it from stack, it is the left bracket
       const correctBracket = parens[leftBracket]; //get the correct right corresponding bracket
       if(s[i] !== correctBracket) return false    //do the comparison, if not equal, return false
     }
