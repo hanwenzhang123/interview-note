@@ -167,5 +167,9 @@ console.log(rightSideViewDFS(tree))
 step 5: double check for errors
 step 6: test our code with our test cases
 step 7: space & time complexity
+Time: O(n)
+Space:  O(n) 
+  worst case - O(w) - w means the width 
+
 step 8: can we optimize our solution?
    
