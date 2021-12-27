@@ -25,6 +25,8 @@ function recursive(node, count){
 }
 
 step 4: write out our solution in code
+//Time: O(n)
+//Space: O(n)
 /*
 NOTE: The beginning portion builds our test case binary tree. Scroll down to the section titled Our Solution for the code solution!
  */
