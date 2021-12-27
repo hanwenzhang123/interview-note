@@ -8,6 +8,8 @@ Depth First Search
 -post-order traversal
 
 step 1: verify the constraints
+what do we do if the tree is empty?
+  just return 0
 
 step 2: write out some test cases
 Input: root = [3,9,20,null,null,15,7]
@@ -16,6 +18,12 @@ Input: root = [1,null,2]
 Output: 2
 
 step 3: figure out a solution without code
+function recursive(node, count){
+  if(node == null) return count;
+  count++;
+  return Math.max(recursive(node.left, count), recursive(node.right, count))
+}
+
 step 4: write out our solution in code
 /*
 NOTE: The beginning portion builds our test case binary tree. Scroll down to the section titled Our Solution for the code solution!
@@ -62,7 +70,7 @@ var maxDepth = function(node, currentDepth) {
     
     currentDepth++;
     
-    return Math.max(maxDepth(node.right, currentDepth), maxDepth(node.left, currentDepth));
+    return Math.max(maxDepth(node.right, currentDepth), maxDepth(node.left, currentDepth)); //return the larger number for how depth the tree is
 };
 
 console.log(maxDepth(root, 0));
@@ -71,3 +79,4 @@ step 5: double check for errors
 step 6: test our code with our test cases
 step 7: space & time complexity
 step 8: can we optimize our solution?
+ 
