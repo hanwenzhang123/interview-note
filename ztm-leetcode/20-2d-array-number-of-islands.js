@@ -48,6 +48,8 @@ console.log(traversalDFS(testMatrix));  //[1, 2, 3, 4, 5, 10, 15, 20, 19, 14, 9,
 
 
 //Matrix traversal - BFS
+//Time: O(n)
+//Space: O(n)
 const testMatrix = [
   [1, 2, 3, 4],
   [5, 6, 7, 8],
