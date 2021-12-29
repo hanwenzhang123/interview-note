@@ -11,6 +11,7 @@ Or we can do it in redux to update value
 design part:
 	design for comment patterns
 constant: primitive, array / object / reference
+ 
 apple care team. Vue.js.
  
 Coding part:
