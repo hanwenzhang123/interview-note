@@ -27,6 +27,17 @@ sequential order
 - get all initial rotten oranges
 - keep track counting total number of fresh oranges
 
+Sequential Order:
+- count fresh oranges
+- put rotten oranges into queues
+
+BFS
+- use queue size to track minutes
+- process rotting oranges
+  - rotten adjacent to fresh oranges
+  - push into queue
+  - decrement fresh orange count
+
 step 4: write out our solution in code
 const testMatrix = [
   [2, 1, 1, 0, 0],
@@ -35,7 +46,7 @@ const testMatrix = [
   [0, 1, 0, 0, 1]
 ];
 
-const directions = [
+const directions = [  //4 directions
   [-1, 0], //up
   [0, 1], //right
   [1, 0], //down
@@ -46,9 +57,8 @@ const ROTTEN = 2;
 const FRESH = 1;
 const EMPTY = 0;
 
-
 const orangesRotting = function(matrix) {
-  if(matrix.length === 0) return 0;
+  if(matrix.length === 0) return 0;   //check null case
 
   const queue = [];  
   let freshOranges = 0;
