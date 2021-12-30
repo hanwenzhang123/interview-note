@@ -32,11 +32,20 @@ step 3: figure out a solution without code
 0 - water
 1 - new island 
     part of the old island
+how do we make sure we do not double count the value
     
 traversal
 - BFS
 - DFS
-sequential
+- space: O(n)
+
+sequential order (top down and left to right)
+- you want to touch every single element
+- you do not care about the order
+- you do not take additional space
+- time: O(n)
+- space: O(1)
+- nested for loop inside another loop not increase another space
 
 step 4: write out our solution in code
 //Number of Islands - BFS
@@ -47,7 +56,7 @@ const testMatrix = [
   [0, 0, 0, 1, 1]
 ];
 
-const directions = [
+const directions = [    //4 directions
   [-1, 0], //up
   [0, 1], //right
   [1, 0], //down
@@ -55,30 +64,30 @@ const directions = [
 ]
 
 const numberOfIslands = function(matrix) {
-  if(matrix.length === 0) return 0;
-  let islandCount = 0;
+  if(matrix.length === 0) return 0;   //when matrix is empty, no islands
+  let islandCount = 0;    //count the island initially 0
 
   for(let row = 0; row < matrix.length; row++) {
-    for(let col = 0; col < matrix[0].length; col++) {
-      if(matrix[row][col] === 1) {
+    for(let col = 0; col < matrix[0].length; col++) {   //same size so just use the first row
+      if(matrix[row][col] === 1) {    //when see the island
         islandCount++;
-        matrix[row][col] = 0;
-        const queue = [];
-        queue.push([row, col]);
+        matrix[row][col] = 0;   //change the value 1 to 0
+        const queue = [];   //since js does not have a queue native implementation
+        queue.push([row, col]); //push the current cell, row and column
 
-        while(queue.length) {
-          const currentPos = queue.shift();
-          const currentRow = currentPos[0];
-          const currentCol = currentPos[1];
+        while(queue.length) {   //while loop to check the direction, 
+          const currentPos = queue.shift();   //the first value in the queue
+          const currentRow = currentPos[0];   //the row of the first value in the queue
+          const currentCol = currentPos[1];   //the column of the first value in the queue
 
-          for(let i = 0; i < directions.length; i++) {
+          for(let i = 0; i < directions.length; i++) {    
             const currentDir = directions[i];
             const nextRow = currentRow + currentDir[0];
             const nextCol = currentCol + currentDir[1];
 
-            if(nextRow < 0 || nextRow >= matrix.length || nextCol < 0 || nextCol >= matrix[0].length) continue;
+            if(nextRow < 0 || nextRow >= matrix.length || nextCol < 0 || nextCol >= matrix[0].length) continue; //when condition met, just continue, break out current iteration
 
-            if(matrix[nextRow][nextCol] === 1) {
+            if(matrix[nextRow][nextCol] === 1) {    //if discover the island 1
               queue.push([nextRow, nextCol]);
               matrix[nextRow][nextCol] = 0;
             }
@@ -88,7 +97,7 @@ const numberOfIslands = function(matrix) {
     }
   }
 
-  return islandCount;
+  return islandCount;   //return the islandCount
 }
 
 console.log(numberOfIslands(testMatrix));
@@ -101,7 +110,7 @@ const testMatrix = [
   [1, 0, 1, 0, 1]
 ];
 
-const directions = [
+const directions = [    //4 directions
   [-1, 0], //up
   [0, 1], //right
   [1, 0], //down
@@ -149,4 +158,3 @@ step 6: test our code with our test cases
 step 7: space & time complexity
 step 8: can we optimize our solution?
   
-
