@@ -48,7 +48,10 @@ sequential order (top down and left to right)
 - nested for loop inside another loop not increase another space
 
 step 4: write out our solution in code
-//Number of Islands - BFS
+//Number of Islands - BFS - better
+//sequential search using 2 for-loops 
+- Time: O(m*n) //size m*n, row*column
+- Space: O(max(m, n))
 const testMatrix = [
   [1, 1, 1, 0, 0],
   [1, 1, 1, 0, 1],
@@ -67,29 +70,29 @@ const numberOfIslands = function(matrix) {
   if(matrix.length === 0) return 0;   //when matrix is empty, no islands
   let islandCount = 0;    //count the island initially 0
 
-  for(let row = 0; row < matrix.length; row++) {
+  for(let row = 0; row < matrix.length; row++) {  //sequential search using 2 for-loops to keep track how to many island
     for(let col = 0; col < matrix[0].length; col++) {   //same size so just use the first row
-      if(matrix[row][col] === 1) {    //when see the island
-        islandCount++;
-        matrix[row][col] = 0;   //change the value 1 to 0
-        const queue = [];   //since js does not have a queue native implementation
-        queue.push([row, col]); //push the current cell, row and column
+      if(matrix[row][col] === 1) {    //BFS, only check when see the island 1
+        islandCount++;      //found island and count++
+        matrix[row][col] = 0;   //reverse the value 1 to 0, keep fliping 1 to 0
+        const queue = [];   //BFS, since js does not have a queue native implementation
+        queue.push([row, col]); //push the current cell, row and column 
 
         while(queue.length) {   //while loop to check the direction, 
           const currentPos = queue.shift();   //the first value in the queue
-          const currentRow = currentPos[0];   //the row of the first value in the queue
-          const currentCol = currentPos[1];   //the column of the first value in the queue
+          const currentRow = currentPos[0];   //the row of the first value of the array pair in queue
+          const currentCol = currentPos[1];   //the column of the first value of the array pair in queue
 
-          for(let i = 0; i < directions.length; i++) {    
-            const currentDir = directions[i];
-            const nextRow = currentRow + currentDir[0];
-            const nextCol = currentCol + currentDir[1];
+          for(let i = 0; i < directions.length; i++) {    //check the 4 directions, 0 or 1
+            const currentDir = directions[i];   //get each direction  
+            const nextRow = currentRow + currentDir[0];   //get the direction row
+            const nextCol = currentCol + currentDir[1];   //get the direction column
 
             if(nextRow < 0 || nextRow >= matrix.length || nextCol < 0 || nextCol >= matrix[0].length) continue; //when condition met, just continue, break out current iteration
 
             if(matrix[nextRow][nextCol] === 1) {    //if discover the island 1
-              queue.push([nextRow, nextCol]);
-              matrix[nextRow][nextCol] = 0;
+              queue.push([nextRow, nextCol]);   //push the value pair(row, column) into the queue
+              matrix[nextRow][nextCol] = 0;   //flip the 1 to 0
             }
           }
         }
@@ -103,6 +106,8 @@ const numberOfIslands = function(matrix) {
 console.log(numberOfIslands(testMatrix));
 
 //Number of Islands - DFS
+- Time: O(m*n) 
+- Space: O(m*n)
 const testMatrix = [
   [0, 1, 0, 1, 0],
   [1, 0, 1, 0, 1],
