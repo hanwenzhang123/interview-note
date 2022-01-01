@@ -5,6 +5,7 @@ Graphs
   - can have multiple connections to multiple nodes
   - nodes connect in a way connect to each other in circular way - cycle
   - you can have numerous cycles
+  //2d array and binary tree are considered graphs
   
 undirected: traverse any node to another node back and forth
 direct: dictated by the direction of the actual arrow, only traverse one way based on the direction
