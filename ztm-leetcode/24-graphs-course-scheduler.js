@@ -66,6 +66,8 @@ canFinish(6, p)
 step 5: double check for errors
 step 6: test our code with our test cases
 step 7: space & time complexity
+//Time: O(P+n^2)
+//Space: O(n^2)
 step 8: can we optimize our solution?
  //Topological Sort - always applicable in Directed Acyclic Graph (no cycle)
  - a sort returns, a specific order of the vertex is of a given graph.
