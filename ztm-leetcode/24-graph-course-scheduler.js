@@ -1,75 +1,149 @@
-// Time Needed to Inform All Employees
-you will receive a manager array where managers[i] is the id of the manager for employee
-each employee has one direct manager
-the company head has no manager (managers[headID] = -1).
-it is guaranteed the subordination relationships will have a tree structure
+There are a total of numCourses courses you have to take, labeled from 0 to numCourses 
+ You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
+
+For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+Return true if you can finish all courses. Otherwise, return false.
 
 step 1: verify the constraints
-n: total number of employees 
-headID: the head of the company
-informTime: accumulate and figure out the time for every single employee to get the news
-
-//cyclic? 
-can employees have more than 1 manager?
-  no, employees can only have 1 manager
-//unconnected?
-does every employee have a manager?
-  yes, every employee has a manager except the head of the company who has no manager
-//weighted?
-//directed?
 
 step 2: write out some test cases
-Input: n = 1, headID = 0, manager = [-1], informTime = [0]
-Output: 0
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: true
+Explanation: There are a total of 2 courses to take. 
+To take course 1 you should have finished course 0. So it is possible.
 
-Input: n = 6, headID = 2, manager = [2,2,-1,2,2,2], informTime = [0,0,1,0,0,0]
-Output: 1
-
-Input: n = 8, headID = 4, manager = [2,2,4,6,-1,4,4,5], informTime = [0,0,4,0,7,3,6,0]
-Output: 13
-
-Input: n = 7, headID = 6, manager = [1,2,3,4,5,6,-1], informTime = [0,6,5,4,3,2,1]
-Output: 21
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: true
+Explanation: There are a total of 2 courses to take. 
+To take course 1 you should have finished course 0. So it is possible.
 
 step 3: figure out a solution without code
-//how to represent our graph as an adjacency list
-
 
 step 4: write out our solution in code
-//solving our poblem logically using DFS traversal
-const managersArray = [2, 2, 4, 6, -1, 4, 4, 5];
-const informTimeArray = [0, 0, 4, 0, 7, 3, 6, 0];
+//Course schedule - naive BFS
+const p = [[1, 0], [2, 1], [2, 5], [0, 3], [4, 3], [3, 5], [4, 5]]
 
-const numOfMinutes = function(n, headID, managers, informTime) {
-  const adjList = managers.map(() => []);
+const canFinish = function(n, prerequisites) {
+  const adjList = new Array(n).fill(0).map(() => []);
   
-  for(let employee = 0; employee < n; employee++) {
-    const manager = managers[employee];
-    if(manager === -1) continue;
-    
-    adjList[manager].push(employee);
+  for(let i = 0; i < prerequisites.length; i++) {
+    const pair = prerequisites[i];
+    adjList[pair[1]].push(pair[0])
   }
-  
-  return dfs(headID, adjList, informTime);
+
+  for(let v = 0; v < n; v++) {
+    const queue = [];
+    const seen = {};
+    for(let i = 0; i < adjList[v].length; i++) {
+      queue.push(adjList[v][i]);
+    }
+    
+    while(queue.length) {
+      const current = queue.shift();
+      seen[current] = true;
+
+      if(current === v) return false;
+      const adjacent = adjList[current];
+      for(let i = 0; i < adjacent.length; i++) {
+        const next = adjacent[i];
+        if(!seen[next]) {
+          queue.push(next);
+        }
+      }
+    }
+  }
+
+  return true;
 };
 
-const dfs = function(currentId, adjList, informTime) {
-  if(adjList[currentId].length === 0) {
-    return 0;
-  }
-  
-  let max = 0;
-  const subordinates = adjList[currentId];
-  for(let i = 0; i < subordinates.length; i++) {
-    max = Math.max(max, dfs(subordinates[i], adjList, informTime));
-  }
-  
-  return max + informTime[currentId];
-}
+canFinish(6, p)
 
-console.log(numOfMinutes(8, 4, managersArray, informTimeArray));
+
+//Course schedule - Topological Sort with adjacency list
+ const p = [[1, 0], [2, 1], [2, 5], [0, 3], [4, 3], [3, 5], [4, 5]]
+
+const canFinishWithAdj = function(n, prerequisites) {
+  const inDegree = new Array(n).fill(0);
+  const adjList = inDegree.map(() => []);
+  
+  for(let i = 0; i < prerequisites.length; i++) {
+    const pair = prerequisites[i];
+    inDegree[pair[0]]++;
+    adjList[pair[1]].push(pair[0])
+  }
+  
+  const stack = [];
+  
+  for(let i = 0; i < inDegree.length; i++) {
+    if(inDegree[i] === 0) {
+      stack.push(i);
+    }
+  }
+  
+  let count = 0;
+  
+  while(stack.length) {
+    const current = stack.pop();
+    count++;
+    
+    const adjacent = adjList[current];
+
+    for(let i = 0; i < adjacent.length; i++) {
+      const next = adjacent[i];
+      inDegree[next]--;
+      if(inDegree[next] === 0) {
+        stack.push(next);
+      }
+    }
+  }
+  
+  return count === n;
+};
+
+canFinishWithAdj(6, p)
 
 step 5: double check for errors
 step 6: test our code with our test cases
 step 7: space & time complexity
 step 8: can we optimize our solution?
+  
+  //Course schedule - Topological Sort without adjacency list
+   const p = [[1, 0], [2, 1], [2, 5], [0, 3], [4, 3], [3, 5], [4, 5]]
+
+const canFinish = function(n, prerequisites) {
+  const inDegree = new Array(n).fill(0);
+  
+  for(let i = 0; i < prerequisites.length; i++) {
+    inDegree[prerequisites[i][0]]++;
+  }
+  
+  const stack = [];
+  
+  for(let i = 0; i < inDegree.length; i++) {
+    if(inDegree[i] === 0) {
+      stack.push(i);
+    }
+  }
+  
+  let count = 0;
+  
+  while(stack.length) {
+    const current = stack.pop();
+    count++;
+    
+    for(let i = 0; i < prerequisites.length; i++) {
+      const pair = prerequisites[i];
+      if(pair[1] === current) {
+        inDegree[pair[0]]--;
+        if(inDegree[pair[0]] === 0) {
+          stack.push(pair[0]);
+        }
+      }
+    }
+  }
+  
+  return count === n;
+};
+
+
+canFinish(6, p)
