@@ -90,7 +90,7 @@ const traversalBFS = function(graph) {
 
 console.log(traversalBFS(adjacencyMatrix));
   
-  //Coding DFS
+  //Coding DFS - go as deep as possible
 //Adjacency List - DFS
 const adjacencyList = [
   [1, 3],
@@ -105,15 +105,15 @@ const adjacencyList = [
 ];
 
 const traversalDFS = function(vertex, graph, values, seen) {
-  values.push(vertex);
-  seen[vertex] = true;
+  values.push(vertex);    //push the vertex to the values
+  seen[vertex] = true;    //set the vertex in seen as true
 
-  const connections = graph[vertex];
+  const connections = graph[vertex];  //find the connection of the vertex
   for(let i = 0; i < connections.length; i++) {
-    const connection = connections[i];
+    const connection = connections[i];    //loop through each connection
 
-    if(!seen[connection]) {
-      traversalDFS(connection, graph, values, seen);
+    if(!seen[connection]) {   //if not in the seen connection vertext yet
+      traversalDFS(connection, graph, values, seen);    //recursion again
     }
   }
 }
