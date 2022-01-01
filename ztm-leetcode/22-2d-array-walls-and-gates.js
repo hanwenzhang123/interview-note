@@ -1,5 +1,10 @@
+Given a 2D array containing - 1(walls) 0(gates) and INF(empty room), each empty room with number of steps to the nearest gate
+if it is impossible to reach to a gate, leave INF as the value. INF is equal to 2147483647.
 
-
+step 1: verify the constraints
+step 2: write out some test cases
+step 3: figure out a solution without code
+step 4: write out our solution in code
 const INF = 2147483647;
 
 const testMatrix = [
@@ -40,3 +45,9 @@ const wallsAndGates = (rooms) => {
 wallsAndGates(testMatrix)
 
 console.log(testMatrix);
+
+step 5: double check for errors
+step 6: test our code with our test cases
+step 7: space & time complexity
+step 8: can we optimize our solution?
+
