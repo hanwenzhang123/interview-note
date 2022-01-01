@@ -32,8 +32,9 @@ Input: n = 7, headID = 6, manager = [1,2,3,4,5,6,-1], informTime = [0,6,5,4,3,2,
 Output: 21
 
 step 3: figure out a solution without code
-//how to represent our graph as an adjacency list
-
+//how to represent our graph as an adjacency list 
+- one node to the next (down)
+transform the manager array into adjacency list
 
 step 4: write out our solution in code
 //solving our poblem logically using DFS traversal
@@ -41,30 +42,31 @@ const managersArray = [2, 2, 4, 6, -1, 4, 4, 5];
 const informTimeArray = [0, 0, 4, 0, 7, 3, 6, 0];
 
 const numOfMinutes = function(n, headID, managers, informTime) {
-  const adjList = managers.map(() => []);
+  const adjList = managers.map(() => []); //transform to basic adjacency list
   
-  for(let employee = 0; employee < n; employee++) {
-    const manager = managers[employee];
-    if(manager === -1) continue;
+  //set up the adjList through for loop - O(n)
+  for(let employee = 0; employee < n; employee++) { //loop through employees
+    const manager = managers[employee]; //get the manager of that employee
+    if(manager === -1) continue;  //if the value is -1 then skip current loop iteration, move on to the next value
     
-    adjList[manager].push(employee);
+    adjList[manager].push(employee);  //get this manager and his array, and push current employee to it
   }
   
-  return dfs(headID, adjList, informTime);
+  return dfs(headID, adjList, informTime);  //no needs the manager array - O(n)
 };
 
-const dfs = function(currentId, adjList, informTime) {
-  if(adjList[currentId].length === 0) {
+const dfs = function(currentId, adjList, informTime) {  //O(n)
+  if(adjList[currentId].length === 0) { //base case
     return 0;
   }
   
   let max = 0;
   const subordinates = adjList[currentId];
-  for(let i = 0; i < subordinates.length; i++) {
-    max = Math.max(max, dfs(subordinates[i], adjList, informTime));
+  for(let i = 0; i < subordinates.length; i++) {  //explore all the subordinates and get the value
+    max = Math.max(max, dfs(subordinates[i], adjList, informTime)); //call dfs based on current subordinate, and get the updated max value
   }
   
-  return max + informTime[currentId];
+  return max + informTime[currentId];   //max plus own current informTime
 }
 
 console.log(numOfMinutes(8, 4, managersArray, informTimeArray));
@@ -72,4 +74,7 @@ console.log(numOfMinutes(8, 4, managersArray, informTimeArray));
 step 5: double check for errors
 step 6: test our code with our test cases
 step 7: space & time complexity
+//time: O(3n) - O(n)
+//space: O(3n) - O(n)
 step 8: can we optimize our solution?
+  
