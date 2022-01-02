@@ -189,30 +189,32 @@ Dynamic programming by building out the entire state space tree and exploring ev
 Store the value of this work somewhere so when we come back, we do not have to recalculate it, we have saved it somewhere.
 
 //Network time delay - Bellman-Ford Algorithm Solution
+//Time: O(N*E)
+//Space: O(N)
 const t = [[1, 4, 2], [1, 2, 9], [4, 2, -4], [2, 5, -3], [4, 5, 6],[3, 2, 3], [5, 3, 7], [3, 1, 5]]
 
 var networkDelayTime = function(times, N, k) {
-  const distances = new Array(N).fill(Infinity);
+  const distances = new Array(N).fill(Infinity);    //fill with all infinity
   
-  distances[k - 1] = 0;
-  for(let i = 0; i < N - 1; i++) {
-    let count = 0;
-    for(let j = 0; j < times.length; j++) {
+  distances[k - 1] = 0; //index starting 0
+  for(let i = 0; i < N - 1; i++) {    //Bellman-Ford Algorithm
+    let count = 0;    //count when value changes
+    for(let j = 0; j < times.length; j++) {   //run through all different edges
       const source = times[j][0];
       const target = times[j][1];
       const weight = times[j][2];
       
-      if(distances[source - 1] + weight < distances[target - 1]) {
-        distances[target - 1] = distances[source - 1] + weight;
-        count++;
+      if(distances[source - 1] + weight < distances[target - 1]) {  //condition check current source node plus node is less than the target in distance
+        distances[target - 1] = distances[source - 1] + weight;   //update distance in target
+        count++;    //increment the count
       }
     }
     
-    if(count === 0) break;
+    if(count === 0) break;    //if no value updated, then break the loop
   }
   
-  const ans = Math.max(...distances);
-  return ans === Infinity ? -1 : ans;
+  const ans = Math.max(...distances); //get the maximum value from distances array
+  return ans === Infinity ? -1 : ans;   //if inifinity then return -1, otherwise return the answer of maximum value in distance array
 };
 
 console.log(networkDelayTime(t, 5, 1))
