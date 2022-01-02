@@ -6,7 +6,19 @@ Algorithmic approaches
 - backtracking
 
 //Graphs Dijkstra algorithm (greedy method for optimization approach)
+- only applies to graphs that are directed and weighted
 
+Greedy method is an algorithmic paradigm, a way to tackle problems
+- for optimization question 
+  - minimum or maximum
+  - shortest path
+  - shortest time
+- make a decision between all my options, pick the one that most logically to optimal solution.
+
+Dijkstra algorithm
+generate array that keeps track of the weights and the distances that we have traveled so far to every vertex.
+
+//Question: Network Time Delay
 There are n network nodes labelled 1 to N
 given a times array, 
   n is the times array
@@ -35,8 +47,8 @@ Input: times = [[1,2,1]], n = 2, k = 2
 Output: -1
 
 step 3: figure out a solution without code
+
 step 4: write out our solution in code
-//Network time delay - Dijkstra's Algorithm Solution
 // Priority Queue implementation
 class PriorityQueue {
   constructor(comparator = (a, b) => a > b) {
@@ -123,40 +135,47 @@ class PriorityQueue {
   }
 }
 
- const t = [[1, 2, 9], [1, 4, 2], [2, 5, 1], [4, 2, 4], [4, 5, 6],[3, 2, 3], [5, 3, 7], [3, 1, 5]]
+//Network time delay - Dijkstra's Algorithm Solution
+//Time: O(E*logN + N*logN) - e is edges and n is nodes
+//      O(E*logN)
+//Space: O(E+N)
+
+const t = [[1, 2, 9], [1, 4, 2], [2, 5, 1], [4, 2, 4], [4, 5, 6],[3, 2, 3], [5, 3, 7], [3, 1, 5]]
 
 const networkDelayTime = function(times, N, k) {
-  const distances = new Array(N).fill(Infinity);
-  const adjList = distances.map(() => []);
-  distances[k - 1] = 0;
+  const distances = new Array(N).fill(Infinity);  //create N arrays and filled with infinite values
+  const adjList = distances.map(() => []);  //every value to be an empty array, map also returns array
+  distances[k - 1] = 0;   //index that are representative of the identifier for the respective node, just substract one
   
-  const heap = new PriorityQueue((a, b) => distances[a] < distances[b]);
-  heap.push(k - 1);
+  //priority queue takes the comparator function that we want in order to figure out whether it is a min heap or a max heap.
+  const heap = new PriorityQueue((a, b) => distances[a] < distances[b]);  //always want the smallest one, referencing the distances value
+  heap.push(k - 1); //initial k value, minus 1 due to index
   
-  for(let i = 0; i < times.length; i++) {
+  //fill in our adjacency list based on our times array.
+  for(let i = 0; i < times.length; i++) { //get the individual variables
     const source = times[i][0];
     const target = times[i][1];
     const weight = times[i][2];
-    adjList[source - 1].push([target - 1, weight]);
+    adjList[source - 1].push([target - 1, weight]); //fill out adjList value, minus 1 due to identifier
   }
   
-  while(!heap.isEmpty()) {
-    const currentVertex = heap.pop();
+  while(!heap.isEmpty()) {  //as long as there is value in the heap
+    const currentVertex = heap.pop();   //removes the last element
 
-    const adjacent = adjList[currentVertex];
+    const adjacent = adjList[currentVertex];  //get the neighbor that connected to our current vertex
     for(let i = 0; i < adjacent.length; i++) {
-      const neighboringVertex = adjacent[i][0];
-      const weight = adjacent[i][1];
-      if(distances[currentVertex] + weight < distances[neighboringVertex]) {
-          distances[neighboringVertex] = distances[currentVertex] + weight;
-          heap.push(neighboringVertex);
+      const neighboringVertex = adjacent[i][0]; //neighboring vertex identifier
+      const weight = adjacent[i][1];  //weight
+      if(distances[currentVertex] + weight < distances[neighboringVertex]) {  //do the check 
+          distances[neighboringVertex] = distances[currentVertex] + weight; //update the value
+          heap.push(neighboringVertex); //push the value into the heap
       }
     }
   }
   
-  const ans = Math.max(...distances);
+  const ans = Math.max(...distances); //get the max number from distances in array of integers
 
-  return ans === Infinity ? -1 : ans;
+  return ans === Infinity ? -1 : ans;   //return the answer
 };
 
 console.log(networkDelayTime(t, 5, 1))
@@ -165,6 +184,10 @@ step 5: double check for errors
 step 6: test our code with our test cases
 step 7: space & time complexity
 step 8: can we optimize our solution?
+//What is The Bellman-Ford Algorithm Solution? - Conceptualizing Dynamic Programming
+Dynamic programming by building out the entire state space tree and exploring every possible path and option.
+Store the value of this work somewhere so when we come back, we do not have to recalculate it, we have saved it somewhere.
+
 //Network time delay - Bellman-Ford Algorithm Solution
 const t = [[1, 4, 2], [1, 2, 9], [4, 2, -4], [2, 5, -3], [4, 5, 6],[3, 2, 3], [5, 3, 7], [3, 1, 5]]
 
