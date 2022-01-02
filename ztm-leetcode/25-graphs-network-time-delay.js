@@ -17,6 +17,7 @@ Greedy method is an algorithmic paradigm, a way to tackle problems
 
 Dijkstra algorithm
 generate array that keeps track of the weights and the distances that we have traveled so far to every vertex.
+does not handle any way to graph that has negatibe weights in it.
 
 //Question: Network Time Delay
 There are n network nodes labelled 1 to N
@@ -187,6 +188,7 @@ step 8: can we optimize our solution?
 //What is The Bellman-Ford Algorithm Solution? - Conceptualizing Dynamic Programming
 Dynamic programming by building out the entire state space tree and exploring every possible path and option.
 Store the value of this work somewhere so when we come back, we do not have to recalculate it, we have saved it somewhere.
+Bellman-Ford Algorithm allows negative weights in it.
 
 //Network time delay - Bellman-Ford Algorithm Solution
 //Time: O(N*E)
