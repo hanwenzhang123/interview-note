@@ -260,8 +260,8 @@ r < 0 || r > N, c < 0 || c > N
 probability(r, c, k) = 0
  */
 
-//Time: O()
-//Space: O(8^k)
+//Time: O(K*N^2)
+//Space: O(N^2)
 
 const DIRECTIONS = [
   [-2, -1],
