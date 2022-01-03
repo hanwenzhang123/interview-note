@@ -26,98 +26,100 @@ Output: [["5","3","4","6","7","8","9","1","2"],["6","7","2","1","9","5","3","4",
 
 step 3: figure out a solution without code
 step 4: write out our solution in code
-const getBoxId = function (row, col) {
+//Time: O(9!)^9 - O(9)^81 - 9*9 to the 81 times
+//Space: O(1) - O(81) - set size, constant space
+const getBoxId = function (row, col) {  //get the 3*3 box id
   const rowVal = Math.floor(row / 3) * 3;
   const colVal = Math.floor(col / 3);
 
   return rowVal + colVal;
 };
 
-const isValid = function (box, row, col, num) {
+const isValid = function (box, row, col, num) {   //validaty
   if (box[num] || row[num] || col[num]) {
-    return false;
+    return false;   //wrong cases if we have a value at above cases
   } else {
     return true;
   }
 };
 
-const solveBacktrack = function (board, boxes, rows, cols, r, c) {
+const solveBacktrack = function (board, boxes, rows, cols, r, c) {  //valid check
   if (r === board.length || c === board[0].length) {
-    return true;
+    return true;    //boolean, whether or not continue
   } else {
-    if (board[r][c] === '.') {
-      for (let num = 1; num <= 9; num++) {
-        const numVal = num.toString();
-        board[r][c] = numVal;
+    if (board[r][c] === '.') {  //when it has no value yet
+      for (let num = 1; num <= 9; num++) {  //each number up to 9
+        const numVal = num.toString();  //make number as string
+        board[r][c] = numVal;   //add the value to the board
 
-        const boxId = getBoxId(r, c);
-        const box = boxes[boxId];
-        const row = rows[r];
-        const col = cols[c];
+        const boxId = getBoxId(r, c);   //get correct box id
+        const box = boxes[boxId]; //get the box
+        const row = rows[r];  //get the row
+        const col = cols[c];  //get the column
 
-        if (isValid(box, row, col, numVal)) {
-          box[numVal] = true;
+        if (isValid(box, row, col, numVal)) {   //decision => perform the check if valid
+          box[numVal] = true;   //update the respected box column and row to true
           row[numVal] = true;
           col[numVal] = true;
 
-          if (c === board[0].length - 1) {
-            if (solveBacktrack(board, boxes, rows, cols, r + 1, 0)) {
+          if (c === board[0].length - 1) {  //when we reach the end of the board, move to the next stpe through recursive calls
+            if (solveBacktrack(board, boxes, rows, cols, r + 1, 0)) {   //recursive call, increase the row, columb is 0
               return true;
             }
           } else {
-            if (solveBacktrack(board, boxes, rows, cols, r, c + 1)) {
+            if (solveBacktrack(board, boxes, rows, cols, r, c + 1)) {   //recursive call, stay at the same row, increase the column
               return true;
             }
           }
 
-          delete box[numVal];
+          delete box[numVal]; //remove the value
           delete row[numVal];
           delete col[numVal];
         }
 
-        board[r][c] = '.';
+        board[r][c] = '.';    //back to the empty
       }
-    } else {
+    } else {  //when we reach the end of the board, move to the next stpe through recursive calls
       if (c === board[0].length - 1) {
-        if (solveBacktrack(board, boxes, rows, cols, r + 1, 0)) {
+        if (solveBacktrack(board, boxes, rows, cols, r + 1, 0)) {  //recursive call, increase the row, columb is 0
           return true;
         }
       } else {
-        if (solveBacktrack(board, boxes, rows, cols, r, c + 1)) {
+        if (solveBacktrack(board, boxes, rows, cols, r, c + 1)) {  //recursive call, stay at the same row, increase the column
           return true;
         }
       }
     }
   }
 
-  return false;
+  return false;   //not works, change to other values to try
 };
 
 var solveSudoku = function(board) {
   const n = board.length;
-  const boxes = new Array(n), 
+  const boxes = new Array(n), //data structure
         rows = new Array(n), 
         cols = new Array(n);
   
-  for(let i = 0; i < n; i++) {
+  for(let i = 0; i < n; i++) { //data structure
     boxes[i] = {};
     rows[i] = {};
     cols[i] = {};
   }
   
-  for(let r = 0; r < n; r++) {
-    for(let c = 0; c < n; c++) {
-      if(board[r][c] !== '.') {
-        const boxId = getBoxId(r, c);
-        const val = board[r][c];
-        boxes[boxId][val] = true;
-        rows[r][val] = true;
-        cols[c][val] = true;
+  for(let r = 0; r < n; r++) {    //fill in with initial values inside the board
+    for(let c = 0; c < n; c++) {  //loop through entire values
+      if(board[r][c] !== '.') {   //when we have an initial value
+        const boxId = getBoxId(r, c);   //get the box Id
+        const val = board[r][c];    //value
+        boxes[boxId][val] = true;   //mark it true
+        rows[r][val] = true;   //mark it true
+        cols[c][val] = true;   //mark it true
       }
     }
   }
   
-  solveBacktrack(board, boxes, rows, cols, 0, 0);
+  solveBacktrack(board, boxes, rows, cols, 0, 0);   //recursive check
 };
 
 const board = [
@@ -139,7 +141,7 @@ step 5: double check for errors
 step 6: test our code with our test cases
 step 7: space & time complexity
 step 8: can we optimize our solution?
-  //Palindrome Partitioning
+//Palindrome Partitioning
 /*
 ### Question:
 
