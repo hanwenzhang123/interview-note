@@ -16,3 +16,12 @@ var strStr = function(haystack, needle) {
   }
   return -1;
 };
+
+var strStr = function(haystack, needle) {
+    if(needle.length === 0 ) return 0
+    if(!haystack.includes(needle)) return -1
+    if(needle && haystack.includes(needle)){
+        var arr = haystack.split(needle)
+        return arr[0].length
+    }
+};
