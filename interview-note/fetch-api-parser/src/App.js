@@ -37,6 +37,7 @@ const BlackContainerBottom = styled.div`
 
 function App() {
   const [APIData, setAPIData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const formatData = results => {
     results.forEach(data => {
@@ -70,7 +71,16 @@ function App() {
   };
 
   useEffect(() => {
-    fetchData();
+    setLoading(true);
+    let isMounted = true;
+    const loadDataOnlyOnce = async () => {
+      await fetchData();
+      if (isMounted) {
+        setLoading(false);
+        isMounted = false;
+      }
+    };
+    loadDataOnlyOnce();
   }, []);
 
   return (
@@ -83,6 +93,7 @@ function App() {
           paddingBottom: '100px',
         }}
       >
+        {loading && <p>Loading Data...</p>}
         {APIData.map((data, index) => (
           <Species
             key={index}
