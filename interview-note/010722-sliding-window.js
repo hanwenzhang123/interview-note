@@ -39,6 +39,8 @@ const calculation = (arr, k) => {
 var firstWord = "Marry";
 var secondWord = "Armmy"; 
 
+//O(3N) => O(N)
+
 const isAnagram = (firstWord, secondWord) => {
 
   if(firstWord.length !== secondWord.length) return false;
