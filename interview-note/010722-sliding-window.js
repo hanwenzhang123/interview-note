@@ -1,3 +1,8 @@
+//010722 - BeaconFire
+//Sliding Window Technique
+
+
+//Question: pick 3 element either from beginning or end, and return the max adding num from the array.
 const calculation = (arr, k) => {
   const start = arr.slice(0, k);
   let startSum;
