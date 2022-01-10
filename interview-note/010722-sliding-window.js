@@ -1,4 +1,4 @@
-//010722 - BeaconFire
+//01/07/22 - BeaconFire
 //Sliding Window Technique
 function maxSubArray(nums, size){
   if(size<0 || size>arr.length) return null;
@@ -31,3 +31,48 @@ const calculation = (arr, k) => {
   }
   return maxSum;
 };
+
+
+//01/10/22 - Analytic Partners
+var firstWord = "Marry";
+var secondWord = "Armmy"; 
+
+//Anagram - a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman.
+
+const isAnagram = (firstWord, secondWord) => {
+
+	if(firstWord.length !== secondWord.length) return false;
+  
+  let map1 = {};
+  let map2 = {};
+  
+  const firstWordLower = firstWord.toLowerCase();
+  const secondWordLower = secondWord.toLowerCase();
+  
+  for(let i=0; i<=firstWordLower.length; i++){	//O(N)
+    if(map1[firstWordLower[i]]){
+    	map1[firstWordLower[i]] += 1;
+    } else {
+    	map1[firstWordLower[i]] = 1;
+    }
+  }
+  
+  for (let j=0; j<=secondWordLower.length; j++){ //O(N)
+    if(map2[secondWordLower[j]]){
+    	map2[secondWordLower[j]] += 1;
+    } else {
+    	map2[secondWordLower[j]] = 1;
+    }
+  }
+  
+  for (let key in map1) {		//O(N)
+  	if(map1[key] !== map2[key]) {	
+    	return false;
+    }
+  }
+  
+  return true;
+}
+
+console.log(isAnagram(firstWord, secondWord));
+ 
