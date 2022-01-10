@@ -1,3 +1,16 @@
+let maxSubArray = function(nums) {
+    let maxCurrent = nums[0];
+    let maxGlobal = nums[0];
+
+    for (let i = 1; i < nums.length ; i++) {
+      maxCurrent = Math.max(nums[i], maxCurrent + nums[i]); //compare the current number with the maxCurrent + current number, then update the max number of this sub-array
+      if (maxCurrent > maxGlobal) {
+        maxGlobal = maxCurrent;     //update the maxGlobal
+      }
+    }
+
+    return maxGlobal;
+};
 
 var maxSubArray = function(nums) {
   let sum = 0;
