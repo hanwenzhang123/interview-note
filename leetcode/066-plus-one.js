@@ -1,15 +1,16 @@
 var plusOne = function(digits) {
-    for (let i = digits.length - 1; i > 0; i--) { //loop over the digits from the end
+    for (let i = digits.length - 1; i >= 0; i--) { //loop over the digits from the end
         if(digits[i] !== 9){
             digits[i]++;
             return digits;      //end the function, return the array
         } else {
-            digit[i] = 0;   
+            digits[i] = 0; 
         }
     }
     digits.unshift(1);  //when we finish looping for case like [9,9,9]
     return digits;
 };
+
 
 var plusOne = function(digits) {
     let last = digits[digits.length - 1];
