@@ -3,7 +3,7 @@ var addBinary = function(A, B) {
     let carry = 0;
     let i = A.length - 1;   //right most index;
     let j = B.length - 1;   //right most index;
-    while( i >= 0 || j >= 0){
+    while( i >= 0 || j >= 0 ){
         let a = A[i] ? A[i] : "0";
         let b = B[j] ? B[j] : "0";
         sum = String(a ^ b ^ carry) + sum;
