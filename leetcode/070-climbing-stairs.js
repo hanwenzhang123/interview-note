@@ -1,6 +1,5 @@
 // Dynamic Programming
 // O(n)
-
 var climbStairs = function(n) { 
     const dp = Array(n).fill(0);
     dp[0] = 1;
@@ -30,17 +29,17 @@ var climbStairs = function(n) {
 };
 
 var climbStairs = function(n) { 
-    const contingFunc = (stairsRemaining, savedResults) {
-        if(stairsRemainin < 0){
+    const continuingFunc = (stairsRemaining, savedResults) => {
+        if(stairsRemaining < 0){
             return 0;
         }
-        if(stairsRemainin === 0){
+        if(stairsRemaining === 0){
             return 1;
         }
         if(savedResults[stairsRemaining]){  //when we already have the step value saved in the savedResults map
             return savedResults[stairsRemaining];
         }
-        savedResults[stairsRemaining] = continuingFunc(stairsRemaining - 1, savedResults) + continuingFunc(stairsRemaining - 2, savedResults);  //recursion and saved the new value to savedResults map
+        savedResults[stairsRemaining] = continuingFunc(stairsRemaining - 1, savedResults) + continuingFunc(stairsRemaining - 2, savedResults);
         return savedResults[stairsRemaining];
     }
     return continuingFunc(n, {});
