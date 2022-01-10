@@ -1,4 +1,46 @@
-//Solution #1
+/*
+Morris Traversal Algorithm
+1. initialize tourist as root
+2. while the tourist is not on lost (null)
+    set a guide to look at the tourist left subtree
+    the guide will walk to right most point
+    
+    (if there is a bridge, destroy it! note it go right)
+    guide will create a bridge to the tourist
+    tourist walks to left
+    
+(if the guide is lost)
+tourist will note this is the end
+tourist will walk to the right
+ */
+
+function inorderTraversal(root){
+    let tourist = root;
+    let solution = [];
+    
+    while(tourist !== null){
+        let guide = tourist.left;
+        if(tourist.left !== null) {
+            while(guide.right !== null && guide.right !== tourist){
+                guide = guide.right;        //to the right most point
+            }
+            if(guide.right === null){   //right most point
+                guide.right = tourist;
+                tourist = tourist.left;
+            } else {
+                guide.right = null;
+                solution.push(tourist.val);
+                tourist = tourist.right;
+            }
+        } else {
+            solution.push(tourist.val);
+            tourist = tourist.right;
+        }
+    }
+    return solution;
+}
+
+//Solution
 var inorderTraversal = function(root) {
     let res = [];
     let stack = [];
@@ -15,7 +57,7 @@ var inorderTraversal = function(root) {
     return res;
 };
 
-//Solution #2
+//Solution
 var inorderTraversal = function(root) {
    return visitNode(root, []);
 };
