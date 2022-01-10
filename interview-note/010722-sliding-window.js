@@ -34,14 +34,14 @@ const calculation = (arr, k) => {
 
 
 //01/10/22 - Analytic Partners
+//Anagram - a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman.
+
 var firstWord = "Marry";
 var secondWord = "Armmy"; 
 
-//Anagram - a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman.
-
 const isAnagram = (firstWord, secondWord) => {
 
-	if(firstWord.length !== secondWord.length) return false;
+  if(firstWord.length !== secondWord.length) return false;
   
   let map1 = {};
   let map2 = {};
