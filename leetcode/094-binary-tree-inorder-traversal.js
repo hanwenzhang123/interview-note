@@ -1,5 +1,7 @@
 /*
 Morris Traversal Algorithm
+Time - O(N)
+Space - O(1)
 1. initialize tourist as root
 2. while the tourist is not on lost (null)
     set a guide to look at the tourist left subtree
@@ -39,6 +41,10 @@ function inorderTraversal(root){
     }
     return solution;
 }
+
+//DFS
+// Time - O(N)
+// Space - O(N) - at worst
 
 //Solution
 var inorderTraversal = function(root) {
