@@ -30,11 +30,23 @@ a b c = s c
 1 1 1 = 1 1
 */
 
-var addBinary = function(a, b) {
-    return (parseInt(a, 2) + parseInt(b, 2)).toString(2);  
-    //toString in base 2 
-    //parseInt convert string output number in decimal
+var addBinary = function (a, b) {
+    let Atail = a.length - 1;
+    let Btail = b.length - 1;
+    let carry = 0;
+    let sum = "";
+    while (Atail >= 0 || Btail >= 0 || carry) {
+        const digitSum = (+a[Atail] || 0) + (+b[Btail] || 0) + carry;
+        carry = Math.floor(digitSum / 2);
+        sum = (digitSum % 2) + sum;
+
+        Atail--;
+        Btail--;
+    }
+
+    return sum;
 };
+
 
 var addBinary = function (a, b) {
     let op = '',
@@ -60,6 +72,14 @@ var addBinary = function (a, b) {
     op = carry ? carry + op : op;
     return op;
 };
+
+
+var addBinary = function(a, b) {
+    return (parseInt(a, 2) + parseInt(b, 2)).toString(2);  
+    //toString in base 2 
+    //parseInt convert string output number in decimal
+};
+
 
 var addBinary = function(a, b) {
     let carryover = 0;
