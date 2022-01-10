@@ -9,5 +9,5 @@ var isSameTree = function(p, q) {
     if (p.val !== q.val){   //when both p or q value is different 
         return false;
     }
-    return isSameTree(p.right, p.right) && isSameTree(p.left, p.left);  //recursion call, check right and left
+    return isSameTree(p.right, q.right) && isSameTree(p.left, q.left);  //recursion call, check right and left
 };
