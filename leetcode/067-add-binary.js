@@ -37,8 +37,8 @@ var addBinary = function (a, b) {
     let sum = "";
     while (Atail >= 0 || Btail >= 0 || carry) {
         const digitSum = (+a[Atail] || 0) + (+b[Btail] || 0) + carry;
-        carry = Math.floor(digitSum / 2);
-        sum = (digitSum % 2) + sum;
+        carry = Math.floor(digitSum / 2);   //update carryover value, if 2 then 1, 1 then 0
+        sum = (digitSum % 2) + sum;     //update sum
 
         Atail--;
         Btail--;
