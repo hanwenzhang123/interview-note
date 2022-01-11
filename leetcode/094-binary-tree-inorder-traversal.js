@@ -1,3 +1,4 @@
+//Recursive Solution
 var inorderTraversal = function(root) {
     return !root ? [] : dfs(root, [])
 };
@@ -8,6 +9,26 @@ const dfs = (root, res) => {
     res.push(root.val)
     if (root.right) dfs(root.right, res)
     return res
+}
+
+//Easy Iterative with Stack
+function inorderTraversal(root) {
+  const stack = [];
+  const result = [];
+
+  while (true) {
+    if (root) {
+      stack.push(root);
+      root = root.left;
+      continue;
+    }
+
+    if (!stack.length) return result;
+
+    root = stack.pop();
+    result.push(root.val);
+    root = root.right;
+  }
 }
 
 /*
