@@ -68,3 +68,10 @@ balancer will randomly assigned that request to any one of a number of different
 And so we could have many different servers that are completely invisible to the user and any one of those servers can handle given request and respond back.
 And so this would be an example of horizontal scaling for our application.
     
+// Systems Design Interview Concepts - Techlead
+1. Load-balancing - run the client request to a number of different web servers
+2. Caching
+3. Database schema design
+4. Slave-master replications
+5. Database sharding
+6. API design
