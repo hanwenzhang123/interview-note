@@ -69,11 +69,37 @@ And so we could have many different servers that are completely invisible to the
 And so this would be an example of horizontal scaling for our application.
     
 // Systems Design Interview Concepts - Techlead
-1. Load-balancing - run the client request to a number of different web servers
+1. HTTP Load-balancer (web server)
+  - helps to distribute traffic to many different web servers in order to help with scalability
+  - put a load balancer in front of the request and that load balancer will route the client request to a number of different web servers
+  - nginx (software), DNS load balancing (have that website resolve to a number of different IP addresses) 
 2. Caching
-3. Database schema design
+  - handle lots of reads and writes, insert a caching layer and cache the results of that request
+  - in-memory cache is very fast to access, can have cache last like 24 hours or so
+  - Memcached, Redis, Apache Cassandra
+  - Redis - in-memory data structure store (server), used as a NoSQL key–value persistent database, cache, and message broker.
+3. CDN content delivery network (image/video server)
+  - A global network, to cache and static asset files like images, video, JS files, HTML, CSS files
+    - decrease the load on your actual server, access content very fast for users
+    - pull technique: first time may be slow due to fetch and cache, then subsequent users within the local region can access quickly
+  - Distributed system like amazon s3 (Cloud Object Storage) for uploading images
 4. Slave-master replications
-5. Database sharding
-6. API design
+  - a single master database where you write into and then cloned duplicated into many slave databases where you only read from
+  - use case like the user updated the profile and wants to see the changes right away
+5. Database schema design
+  - what tables are you going to use? primary key? indices?
+  - database indexes are important becase they make your queries fast
+6. Database sharding (database server)
+  - split up the database into multiple master database
+  - vertical sharding - take each table and just put it into a new machine (like user table, comment table, user support table, chat table)
+  - horizaontal sharding - take a single table and split that across multiple machines
+7. NoSQL Database
+  - key value pairs model able to scale themselves easily across multiple different machines easily
+  - MongoDB, Amazon Dynamodb, Firebase
+8. API design
+  - how are the client and server communicate each other? What are the methods and functions they use?
+  - what is the data transport mechanism? are you using JSON or protocol buffer?
+  - how do you handle security? for offline usage, how do you make it fast?
+  - the simpler you can keep the system, the better
 
-Redis - in-memory data structure store (server), used as a NoSQL key–value persistent database, cache, and message broker.
+ 
