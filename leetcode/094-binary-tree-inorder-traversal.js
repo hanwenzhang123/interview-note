@@ -1,3 +1,15 @@
+var inorderTraversal = function(root) {
+    return !root ? [] : dfs(root, [])
+};
+
+const dfs = (root, res) => {
+    if (!root) return
+    if (root.left) dfs(root.left, res)
+    res.push(root.val)
+    if (root.right) dfs(root.right, res)
+    return res
+}
+
 /*
 Morris Traversal Algorithm
 Time - O(N)
@@ -73,11 +85,11 @@ var visitNode = function(root, arr) {
         return [];
     }
     
-    if (root.left){
+    if (root.left){     //to the left most
         visitNode(root.left, arr);
     }
     
-    if (root){
+    if (root){      //push the root.value
         arr.push(root.val);
     }
     
