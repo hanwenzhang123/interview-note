@@ -75,3 +75,5 @@ And so this would be an example of horizontal scaling for our application.
 4. Slave-master replications
 5. Database sharding
 6. API design
+
+Redis - in-memory data structure store (server), used as a NoSQL key–value persistent database, cache, and message broker.
