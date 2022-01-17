@@ -162,6 +162,29 @@ let census2020 = [
     {"st": "Vermont", "ppl": 643077},
 ];
 
+//Solution
+for(let i = 1; i < vacStatus.length; i++){
+  let tempData = vacStatus[i]["st"];
+  let lastData = vacStatus[i - 1]["st"];
+  if(tempData === lastData) {
+  	vacStatus.splice(i-1, 1);
+  }
+}
+console.log(vacStatus);
+
+const rate = vacStatus.map((status) => {
+  const currentCensus = census2020.find((census) => census.st === status.st);
+  let vacRate;
+  currentCensus ? vacRate = status.vac / currentCensus.ppl : vacRate = null;
+  /* const vacRate = status.vac / currentCensus?.ppl || null; */
+
+  return {
+    st: status.st,
+    r: vacRate,
+  };
+});
+console.log(rate) 
+
 // Your result should look like:
 let vacRate = [
     {"st": "Connecticut", "r": 0.8407570943974726},
