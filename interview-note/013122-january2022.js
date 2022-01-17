@@ -137,7 +137,7 @@ let vacRate = [
 ];
 
 
-//Data
+//01/20/2022 - Analytic Partners - Revised
 let vacStatus = [
     {"st": "Connecticut", "date": "12/05/2021", "vac": 3031233},
     {"st": "Connecticut", "date": "12/06/2021", "vac": 3031723},
