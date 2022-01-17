@@ -135,3 +135,39 @@ let vacRate = [
 	{"st": "Rhode Island", "r": 961320 / 1097379},
 	{"st": "Vermont", "r": 564218 / 643077},
 ];
+
+
+//Data
+let vacStatus = [
+    {"st": "Connecticut", "date": "12/05/2021", "vac": 3031233},
+    {"st": "Connecticut", "date": "12/06/2021", "vac": 3031723},
+    {"st": "New Jersey", "date": "01/08/2022", "vac": 7554407},
+    {"st": "New Jersey", "date": "01/09/2022", "vac": 7560007},
+    {"st": "New Jersey", "date": "01/10/2022", "vac": 7562207},
+    {"st": "New Jersey", "date": "01/11/2022", "vac": 7564407},
+    {"st": "New York", "date": "01/09/2022", "vac": 16625152},
+    {"st": "New York", "date": "01/10/2022", "vac": 16626152},
+    {"st": "Pennsylvania", "date": "01/10/2022", "vac": 10208537},
+    {"st": "Pennsylvania", "date": "01/11/2022", "vac": 10218537},
+    {"st": "Rhode Island", "date": "01/11/2022", "vac": 961320},
+    {"st": "Vermont", "date": "01/11/2022", "vac": 564218},
+];
+
+let census2020 = [
+    {"st": "Connecticut", "ppl": 3605944},
+    {"st": "Maine", "ppl": 1362359},
+    {"st": "Massachusetts", "ppl": 7029917},
+    {"st": "New Hampshire", "ppl": 1377529},
+    {"st": "Rhode Island", "ppl": 1097379},
+    {"st": "Vermont", "ppl": 643077},
+];
+
+// Your result should look like:
+let vacRate = [
+    {"st": "Connecticut", "r": 0.8407570943974726},
+    {"st": "New Jersey", "r": null},
+    {"st": "New York", "r": null},
+    {"st": "Pennsylvania", "r": null},
+    {"st": "Rhode Island", "r": 0.8760145765501254},
+    {"st": "Vermont", "r": 0.8773723830894279},
+];
