@@ -25,6 +25,7 @@ title: Coding Interview Basic Questions
 - [Find the Midpoint](#Find-the-Midpoint)
 - [Circular Lists](#Circular-Lists)
 - [Step Back From the Tail](#Step-Back-From-the-Tail)
+- [Building a Tree](#Building-a-Tree)
 
 #### Memoization
 ```js
@@ -642,4 +643,39 @@ function fromLast(list, n) {
 ```
 #### Building a Tree
 ```js
+class Node {
+  constructor(data) { 
+    this.data = data;
+    this.children = [];
+  }
+  add(data) { 
+    this.children.push(new Node(data)); 
+  }
+  remove(data) { 
+    this.children = this.children.filter(node => { 
+      return node.data !== data;
+    });
+  }
+}
+class Tree {
+  constructor() {
+    this.root = null;
+  }
+  traverseBF(fn) {
+    const arr = [this.root]; 
+    while (arr.length) {
+      const node = arr.shift(); 
+      arr.push(...node.children); 
+      fn(node);
+    }
+  }
+  traverseDF(fn) {
+    const arr = [this.root];
+    while (arr.length) {
+      const node = arr.shift();
+      arr.unshift(...node.children);  
+      fn(node);
+    }
+  }
+}
 ```
