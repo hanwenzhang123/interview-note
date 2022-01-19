@@ -22,7 +22,9 @@ title: Coding Interview Basic Questions
 - [Stack](#Stack)
 - [Two Become One](#Two-Become-One)
 - [Lineked Lists](#Lineked-Lists)
-- [Find-the-Midpoint](#Find-the-Midpoint)
+- [Find the Midpoint](#Find-the-Midpoint)
+- [Circular Lists](#Circular-Lists)
+- [Step Back From the Tail](#Step-Back-From-the-Tail)
 
 #### Memoization
 ```js
