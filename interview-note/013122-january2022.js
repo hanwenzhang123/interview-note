@@ -1,43 +1,4 @@
 //01/07/22 - BeaconFire
-//Brute Force - O(n*k) 
-//Returns maximum sum in a subarray of size k.
-function maxSum(arr, n, k){
-    let max_sum = 0;
-	
-    for (let i = 0; i < n - k + 1; i++) {
-        let current_sum = 0;
-        for (let j = 0; j < k; j++){
-            current_sum = current_sum + arr[i + j];
-	}
-        max_sum = Math.max(current_sum, max_sum);
-    }
- 
-    return max_sum;
-}
- 
-// Driver code
-let arr = [ 1, 4, 2, 10, 2, 3, 1, 0, 20 ];
-let k = 4;
-let n = arr.length;
-document.write(maxSum(arr, n, k));
-
-//Sliding Window Technique
-function maxSubArray(nums, size){
-  if(size<0 || size>arr.length) return null;
-  let currSum = 0;
-  let maxSumSeen = -Infinity;
-  for(let i = 0; i < nums.length; i++){
-    currSum += nums[i];
-    if(i >= size-1){
-      maxSumSeen = Math.max(currSum, maxSumSeen);
-      currSum -= nums[i-(size-1)];
-    }
-  }
-  return maxSumSeen;
-}
-const arr = [1,2,3,4,5,4,8,6,2];
-console.log(maxSubArray(arr,3));
-
 //Question: 1423. Maximum Points You Can Obtain from Cards
 //https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
 //pick k element either from beginning or end, and return the max adding num from the array.
