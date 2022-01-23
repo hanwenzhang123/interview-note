@@ -16,7 +16,7 @@ function maxSubArray(nums, size){
 const arr = [1,2,3,4,5,4,8,6,2];
 console.log(maxSubArray(arr,3));
 
-//Question: pick 3 element either from beginning or end, and return the max adding num from the array.
+//Question: pick k element either from beginning or end, and return the max adding num from the array.
 const calculation = (arr, k) => {
   const start = arr.slice(0, k);
   let startSum;
