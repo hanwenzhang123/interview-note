@@ -42,11 +42,6 @@ function maxSum(arr, k){
 }
 
 
-//Returns maximum sum in a subarray of size k.
-let arr = [ 1, 4, 2, 10, 2, 3, 1, 0, 20 ];
-let k = 4;
-let n = arr.length;
-
 //Brute Force - O(n*k) 
 function maxSum(arr, n, k){
     let max_sum = 0;
@@ -61,6 +56,12 @@ function maxSum(arr, n, k){
  
     return max_sum;
 }
+
+//Returns maximum sum in a subarray of size k.
+let arr = [ 1, 4, 2, 10, 2, 3, 1, 0, 20 ];
+let k = 4;
+let n = arr.length;
+
 
 //Sliding Window Technique
 function maxSubArray(nums, size){
