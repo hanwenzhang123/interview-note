@@ -1,4 +1,26 @@
 //01/07/22 - BeaconFire
+//Brute Force - O(n*k) 
+//Returns maximum sum in a subarray of size k.
+function maxSum(arr, n, k){
+    let max_sum = 0;
+	
+    for (let i = 0; i < n - k + 1; i++) {
+        let current_sum = 0;
+        for (let j = 0; j < k; j++){
+            current_sum = current_sum + arr[i + j];
+	}
+        max_sum = Math.max(current_sum, max_sum);
+    }
+ 
+    return max_sum;
+}
+ 
+// Driver code
+let arr = [ 1, 4, 2, 10, 2, 3, 1, 0, 20 ];
+let k = 4;
+let n = arr.length;
+document.write(maxSum(arr, n, k));
+
 //Sliding Window Technique
 function maxSubArray(nums, size){
   if(size<0 || size>arr.length) return null;
