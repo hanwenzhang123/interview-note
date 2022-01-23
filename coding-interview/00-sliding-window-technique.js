@@ -18,8 +18,13 @@ commmonalities?
   - longest / smallest / contains / max / min
 
 //Sliding Window
-const arr = [10,20,30,40,50,60,70]
-const k = 3 //180
+// Given an array of integers of size ‘n’. Calculate the maximum sum possible
+// for ‘k’ consecutive elements in the array.
+//
+// Input  : [10, 20, 30, 40, 50, 60, 70]
+//
+//          k = 3
+// Output : 180
 
 function maxSum(arr, k){
   if(k>arr.length){
