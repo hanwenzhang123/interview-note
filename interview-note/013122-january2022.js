@@ -34,6 +34,31 @@ const calculation = (arr, k) => {
   return maxSum;
 };
 
+// class Solution {
+//     public int maxScore(int[] cardPoints, int k) {
+//         //Approach: DP
+//         int n = cardPoints.length;
+
+//         int prefixSum = 0;
+        
+//         for(int i = 0; i < k; i++){
+//             prefixSum += cardPoints[i];
+//         }
+        
+//         int maximumScore = prefixSum;
+//         int suffixSum = 0;
+        
+//         for(int i = 0; i < k; i++){
+//             prefixSum -= cardPoints[k - 1 - i];
+//             suffixSum += cardPoints[n - 1 - i];
+                
+//             maximumScore = Math.max(maximumScore, prefixSum + suffixSum);
+//         }
+    
+//         return maximumScore;
+//     }
+// }
+
 
 //01/10/22 - Analytic Partners
 //Anagram - a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman.
@@ -80,6 +105,7 @@ const isAnagram = (firstWord, secondWord) => {
 
 console.log(isAnagram(firstWord, secondWord));
  
+
 //01/20/2022 - Analytic Partners
 let vacStatus = [
 	{"st": "Connecticut", "date": "12/06/2021", "vac": 3031723},
@@ -100,16 +126,16 @@ let census2020 = [
 ];
 
 // vaccination rate = vac / ppl:
-Conn r = 3031723 / 3605944 = 0.7
-Rhode Island r = 961320 / 1097379 = 0.9
+// Conn r = 3031723 / 3605944 = 0.7
+// Rhode Island r = 961320 / 1097379 = 0.9
 
-Jan 12, 2022 -> 	1642022959
-Jan 11, 2022 -> 	1641936559
-let convertDateToTs = function(date) {
-	// date: "01/12/2022"
-	let timeStamp = new Date() ... getTime()
-	return timeStamp;
-}
+// Jan 12, 2022 -> 	1642022959
+// Jan 11, 2022 -> 	1641936559
+// let convertDateToTs = function(date) {
+// 	// date: "01/12/2022"
+// 	let timeStamp = new Date() ... getTime()
+// 	return timeStamp;
+// }
 
 //Solution
 let vacRate = [];
