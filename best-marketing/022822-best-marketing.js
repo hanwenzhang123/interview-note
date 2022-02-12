@@ -5,7 +5,8 @@
 6. The browser begins rendering the HTML
 
 Array Slice and Splice
-Slice will create a copy of the original array but not modity 
+Slice will create a copy of the original array but not modify 
+Splice modify the original array
 
 Number(y)
 Or we can just console.log(+y)
@@ -17,7 +18,7 @@ The difference between encodeURI and encodeURIComponent is encodeURIComponent en
 Parent to child through props, child to parent through callback
 Same level components need lifting states up 
 Or using some library like Redux or React.Context
- 
+
 
 const store = {}
 states.forEach(item=>{ store[item] ? store[item]++ : store[item] = 1 })
@@ -30,27 +31,22 @@ important>inline>css
 display:none?
  
  
- 
- 
- 
 //2022.2.11 apple
- 
-先说思路
-把数字用frequncy map 存起来count
-然后做一下判断 找出最大的
 
 const fint_super_majority = (array) => {
     const freqMap =  {}
     array.forEach((num) => {
 	if(freqMap[num] === undefined) {
 		freqMap[num] = 1;
-       } else {
+        } else {
 		freqMap[num] += 1;
-}
+	}
     });
+	
     const keys = Object.keys(freqMap)
     const values = keys.map(key => freqMap[key]);
     const maxValue = Math.max(...values)
+    
     let res = null;
     let count = 0;
     for(let i = 0; i<values.length; i++){
@@ -58,22 +54,20 @@ const fint_super_majority = (array) => {
        const value = values[i]
        if(value === maxValue) {
 		res = num
-		if(count !== 0) {
-			return -1
-}
-count++;
+	if(count !== 0) {
+		return -1
+	}
+	count++;
        }
     }
     return res;
-    
+  
 }
 
 
 //2022.02.11 streamlinity 3rd interview Victory
  
-where r u located,
-intro, work exp
-who is the user
+where r u located, intro, work exp, who is the user
  
 Information logging
 Interface for marketing localization input
@@ -96,50 +90,57 @@ var angleClock = function(hour, minutes) {
 };
  
 代码题： 时钟上时针和分针的角度数
+const clockAngel = (hour, minute) => {
+	const hourAngle = 360 / 12,
+	      minAngle = 360 / 60,
+	      minuteHand = minute * minAngle,
+	      hourHand = hour * hourAngle + minute / 60 * hourAngle;
+	
+	const angle = Math.abs(hourHand - minuteHand);
+	
+	return Math.min(360 - angle, angle);
+};
+
+console.log(clockAngel(11,30));
 
 
-jest
- 
+
 Class MyInfo {
-	constructor(firstName, lastName) {
-		this.firstName = firstName;
-		this.lastName = lastName;
+  constructor(firstName, lastName) {
+	this.firstName = firstName;
+	this.lastName = lastName;
   }
 
   firstNameGetter() {
-    Return this.firstName;
+    return this.firstName;
   }
 
   lastNameGetter() {
-    Return this.lastName;
+    return this.lastName;
   }
 
-  firstNameSetter() {
-    We pass the new value of 
+  firstNameSetter(newFname) {
+    this.firstName = newFname
   }
 
-  lastNameSetter() {
-
+  lastNameSetter(newLname) {
+    this.lastName = newLname
   }
 }
  
 
 team size, technology stack.
  
-That is all my question
  
 props, redux, context
 we can use #Context in pure react
-		Context is used in React to share data across deeply nested components
-		const ColorContext = React.createContext("yellow")
-		​​
- 
+Context is used in React to share data across deeply nested components
+const ColorContext = React.createContext("yellow")
+
  
 For example if we want to propagate the theme of a website to some children component, we can
  
-Create a themeContext, and use Provider and Consumer to use it in certain level of the component
- 
-tree.
+Create a themeContext, and use Provider and Consumer to use it in certain level of the component tree.
  
 1.debounce: “”
 			for a fast typist there will be several API calls in a search
@@ -162,27 +163,27 @@ import { useState } from ‘react’;
 function App() {
 	const [firstName, setFirstName] = useState(“”);
 	const [lastName, setLastName] = useState(“”);
-  const [email, setEmail] = useState(“”);
-  const firstNameHandler = e => {
-    setFirstName(e.target.value);
-  } 
-  const lastNameHandler = e => {
-    setLasttName(e.target.value);
-  }
-  const firstNameHandler = e => {
-    setEmail(e.target.value);
-  }
-  const onSubmit = () => {
+	const [email, setEmail] = useState(“”);
+	const firstNameHandler = e => {
+		setFirstName(e.target.value);
+	} 
+	const lastNameHandler = e => {
+		setLasttName(e.target.value);
+	}
+	const emailHandler = e => {
+		setEmail(e.target.value);
+	}
+	const onSubmit = () => {
 
-    // Handle the validation here, add logic to sanitize the input
+	// Handle the validation here, add logic to sanitize the input
 
-    Repeat the question?
-    Type
+// 		Repeat the question?
+// 		Type
 
-    For example, when we have a search bar
-    }
-    console.log(firstName);
-  }
+// 		For example, when we have a search bar
+// 		}
+// 		console.log(firstName);
+	}
  
 return (
 	<div>
@@ -190,11 +191,11 @@ return (
 		<input value={fistName} onChange={firstNameHandler} />
 		<label>Last Name</label>
 		<input value={lastName} onChange={lastNameHandler} />
-    <label>Email</label>
+		<label>Email</label>
 		<input value={email} onChange={emailHandler} />
 		<button onClick={onSubmit}>Submit</button>
 	</div>
-);
+  );
 }
 
 Export default App ; 
