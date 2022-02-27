@@ -1,3 +1,87 @@
+//01/04/22 - Envogue International
+//App.js
+import "./styles.css";
+import Ad from "../components/Ad";
+import Content from "../components/Content";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import Menu from "../components/Menu";
+
+export default function App() {
+  return (
+    <section className="App">
+      <div className="top">
+        <div className="header">
+	    <h1>HEADER</h1>
+  	</div>
+      </div>
+      <div className="middle">
+          <div className="menu">
+	    <h1>MENU</h1>
+	  </div>
+          <div className="content">
+     	    <h1>CONTENT</h1>
+    	    <p>text placeholder</p>
+  	  </div>
+          <div className="ad">
+	    <h1>AD</h1>
+	    <h1>AD</h1>
+	  </div>
+      </div>
+      <div className="bottom">
+        <div className="footer">
+	  <h1>FOOTER</h1>
+	</div>
+      </div>
+    </section>
+  );
+}
+
+//style.css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+div {
+  width: 100%;
+}
+
+.middle {
+  display: flex;
+}
+
+.menu,
+.ad {
+  background-color: pink;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.content {
+  background-color: peachpuff;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.header,
+.footer {
+  background-color: skyblue;
+  font-size: 25px;
+  padding: 10px;
+}
+
+
 //01/07/22 - BeaconFire
 //Question: 1423. Maximum Points You Can Obtain from Cards
 //https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
