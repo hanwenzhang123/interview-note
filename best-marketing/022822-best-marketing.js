@@ -1,3 +1,48 @@
+first we check the type of value
+if string, we need to use charAt to sort the first character
+
+Yes number using regular compare 
+String we handle differently, localeCompare
+
+-1 if the string is sorted before the compareString
+ 0 if the two strings are equal
+ 1 if the string is sorted after the compareString
+ 
+Box model 
+#Border Box #Box sizing
+	1. box-sizing: #content-box; ->default
+	2. box-sizing: border-box; 
+		border & padding are calculated in element’s width & height
+		Taking paddings & borders into account as part of box model
+			 make it more directly to imagine content in grids
+ 
+#Box Model
+Content - The content of the box, where text and images appear
+Padding - Clears an area around the content. The padding is transparent
+Border - A border that goes around the padding and content
+Margin - Clears an area outside the border. The margin is transparent
+ 
+ 
+<Route
+ path="/dashboard"
+ render={(props) => <Dashboard {...props} authed={true} />}
+/>
+
+
+2022.2.15 apple
+//Anagram
+
+Use lodash. Or write a deepclone function by ourself
+ 
+JSON way cannot deep clone complex object like function, Date. Only works for simple data structure
+it is really not a big difference than writing a getXXX function. 
+ 
+
+setter allow us to setting value by assigning value to the property directly
+getter allow us read the value from a getter function. The user of getter doesn’t need to know the process behind the scene.
+
+
+
 1. You enter a URL into a web browser
 2. The browser looks up the IP address for the domain name via DNS
 3. The browser sends a HTTP request to the server
