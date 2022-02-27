@@ -31,15 +31,78 @@ Margin - Clears an area outside the border. The margin is transparent
 
 2022.2.15 apple
 //Anagram
+function isAnagram(string1, string2){
+	let res = true;
+	const store = {};
+	const arr1 = string1.split("");
+	const arr2 = string2.split("");
+	arr1.forEach((item) => {
+		if(store[item]){
+			store[item]++;
+		} else {
+			store[item] = 1
+		}
+	})
+	arr2.forEach((item) => {
+		if(store[item] === undefined){
+			res = false;
+		} else {
+			store[item]--;
+			if(store[item] < 0){
+				res = false
+			}
+		}
+	})
+	Object.values(store).forEach(i => {
+		if(i != 0) {
+			res=false
+		}
+	})
+	return res;
+}
+
+2022.2.15 apple
+//deep clone
+const deepClone = (obj) => {
+	if(Array.isArray(obj) || typeof obj === "object"){
+		let result;
+		result = Array.isArray(obj) ? [] : {};
+		for(let key in obj) {
+			let value = obj[key];
+			result[key] = typeof value === "object" ? deepClone(value) : value;
+		}
+		return result;
+	} else {
+		return obj;
+	}
+}
 
 Use lodash. Or write a deepclone function by ourself
- 
 JSON way cannot deep clone complex object like function, Date. Only works for simple data structure
-it is really not a big difference than writing a getXXX function. 
- 
 
 setter allow us to setting value by assigning value to the property directly
-getter allow us read the value from a getter function. The user of getter doesn’t need to know the process behind the scene.
+getter allow us read the value from a getter function. 
+The user of getter doesn’t need to know the process behind the scene.
+
+Property getters and setters
+there are two kinds of object properties
+- the first kind is data properties. we already know how to work with them. all properties that we have been using until now were data properties
+- the second type of properties is accessor properties. they are essentially functions that execute on getting and setting a value, but look like regular properties to an external code
+
+Getter and Setters
+accessor properties are represented by getter and setter methods.
+in an object literal they are denoted by get and set
+
+let obj = {
+	get propName() {
+		//getter, the code executed on getting obj.propName
+	},
+	set propName(value){
+		//sette, the code executed on setting obj.propName = value
+	}
+}
+
+the getter works when obj.proName is read, the setter - when it is assigned.
 
 
 
