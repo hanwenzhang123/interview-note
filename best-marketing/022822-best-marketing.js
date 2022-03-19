@@ -1,3 +1,18 @@
+03.07.2022
+1. Jsx, babel
+2. lifecycle
+mounting - componentDidMount
+updating - componentDidUpdate
+unmounting - componentWillUnmount
+3. shouldComponentUpdate, return a true or false
+4. react.memo() as hook for lifecycle shouldComponentUpdate
+5. manage state: setState, redux
+6. react-router
+7. task: TypeScript, React, toDoList
+8. why key in list
+li 最外层应该有个ul？
+
+
 first we check the type of value
 if string, we need to use charAt to sort the first character
 
